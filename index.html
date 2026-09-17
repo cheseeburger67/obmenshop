@@ -3,22 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Obmen Shop</title>
 
 <style>
+
+/* =========================
+   ОСНОВА
+========================= */
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    color: #111111;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7fb;
+    color: #15151a;
 }
 
-/* ОБЩЕЕ */
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================
+   СТРАНИЦЫ
+========================= */
 
 .page {
     display: none;
@@ -29,226 +45,634 @@ body {
     display: flex;
 }
 
-/* СТАРТОВАЯ */
+
+/* =========================
+   СТАРТОВАЯ СТРАНИЦА
+========================= */
 
 #startPage {
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 20% 20%, #eeeeff 0, transparent 30%),
+        radial-gradient(circle at 80% 80%, #e9e4ff 0, transparent 30%),
+        #f8f8fc;
 }
 
-.start-box {
+.start-card {
     width: 420px;
-    height: 590px;
-    border: 4px solid #111;
-    border-radius: 35px;
+    min-height: 590px;
+
+    background: white;
+
+    border: 2px solid #dedee8;
+    border-radius: 32px;
+
+    box-shadow: 0 20px 60px rgba(40, 30, 80, 0.10);
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+
+    padding: 55px 35px;
 }
 
-.logo {
-    border: 4px solid #111;
-    border-radius: 20px;
+.start-logo {
     width: 230px;
-    height: 90px;
+    height: 85px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(135deg, #6c35ff, #9b70ff);
+
+    color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
-    margin-bottom: 55px;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    box-shadow: 0 12px 30px rgba(108, 53, 255, 0.25);
+
+    margin-bottom: 75px;
 }
 
-.main-button {
-    width: 350px;
+.start-button {
+    width: 330px;
     height: 65px;
-    border: 4px solid #111;
-    border-radius: 25px;
+
+    border: none;
+    border-radius: 20px;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: 0.2s;
+
+    margin-bottom: 25px;
+}
+
+.start-button.login {
+    background: #6c35ff;
+    color: white;
+
+    box-shadow: 0 10px 25px rgba(108, 53, 255, 0.25);
+}
+
+.start-button.register {
     background: white;
-    font-size: 21px;
-    cursor: pointer;
+    color: #222;
+    border: 2px solid #dedee8;
+}
+
+.start-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+#loginPage,
+#registerPage {
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at 20% 20%, #eeeeff 0, transparent 30%),
+        radial-gradient(circle at 80% 80%, #e9e4ff 0, transparent 30%),
+        #f8f8fc;
+}
+
+.auth-card {
+    width: 430px;
+
+    background: white;
+
+    border: 2px solid #dedee8;
+    border-radius: 32px;
+
+    box-shadow: 0 20px 60px rgba(40, 30, 80, 0.10);
+
+    padding: 45px 42px;
+}
+
+.auth-logo {
+    text-align: center;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    color: #171725;
+}
+
+.auth-title {
+    text-align: center;
+
+    font-size: 25px;
+    margin: 0 0 8px;
+}
+
+.auth-subtitle {
+    text-align: center;
+
+    color: #77778a;
+
+    font-size: 14px;
+
     margin-bottom: 35px;
 }
 
-.main-button:hover {
-    background: #f1f1f1;
-}
-
-/* ВХОД И РЕГИСТРАЦИЯ */
-
-.auth-box {
-    width: 360px;
-    min-height: 570px;
-    border: 4px solid #111;
-    border-radius: 35px;
-    padding: 145px 25px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .auth-input {
-    width: 285px;
-    height: 65px;
-    border: 4px solid #111;
-    border-radius: 25px;
-    font-size: 20px;
+    width: 100%;
+    height: 60px;
+
+    border: 2px solid #dcdce7;
+    border-radius: 17px;
+
+    background: #fff;
+
     padding: 0 18px;
+
+    font-size: 16px;
+
     outline: none;
-    margin-bottom: 18px;
+
+    margin-bottom: 16px;
+
+    transition: 0.2s;
 }
 
 .auth-input:focus {
-    background: #fafafa;
+    border-color: #7544ff;
+    box-shadow: 0 0 0 4px rgba(117, 68, 255, 0.08);
 }
 
 .auth-button {
-    width: 295px;
-    height: 65px;
-    border: 4px solid #111;
-    border-radius: 25px;
-    background: white;
-    font-size: 20px;
-    cursor: pointer;
-    margin-top: 15px;
+    width: 100%;
+    height: 60px;
+
+    border: none;
+    border-radius: 17px;
+
+    background: #6c35ff;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    margin-top: 10px;
+
+    box-shadow: 0 10px 25px rgba(108, 53, 255, 0.25);
+
+    transition: 0.2s;
 }
 
 .auth-button:hover {
-    background: #f1f1f1;
+    transform: translateY(-2px);
 }
 
-.back-button {
-    border: none;
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 25px;
-}
-
-.message {
-    min-height: 25px;
-    margin-top: 15px;
+.auth-message {
     text-align: center;
+
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #d63a3a;
+}
+
+.auth-back {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    color: #6c35ff;
+}
+
+
+/* =========================
+   ГЛАВНАЯ
+========================= */
+
+#homePage {
+    display: none;
+
+    flex-direction: column;
+
+    background: #f7f7fb;
+}
+
+#homePage.active {
+    display: flex;
+}
+
+
+/* HEADER */
+
+.header {
+    height: 92px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-bottom: 1px solid #dedee8;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 42px;
+
+    gap: 18px;
+}
+
+.logo-small {
+    font-size: 23px;
+    font-weight: 800;
+
+    color: #6c35ff;
+
+    margin-right: 15px;
+}
+
+.search-box {
+    width: 350px;
+    height: 52px;
+
+    background: #f7f7fb;
+
+    border: 2px solid #dedee8;
+    border-radius: 17px;
+
+    padding: 0 18px;
+
+    outline: none;
+
     font-size: 15px;
 }
 
-/* ГЛАВНАЯ */
-
-#homePage {
-    flex-direction: column;
-}
-
-.header {
-    height: 110px;
-    border-bottom: 3px solid #111;
-    display: flex;
-    align-items: center;
-    padding: 0 55px;
-    gap: 20px;
-}
-
-.search {
-    width: 310px;
-    height: 55px;
-    border: 3px solid #111;
-    border-radius: 20px;
-    padding: 0 15px;
-    font-size: 16px;
+.search-box:focus {
+    border-color: #7544ff;
 }
 
 .shop-button {
-    width: 160px;
-    height: 55px;
-    border: 3px solid #111;
-    border-radius: 20px;
+    height: 52px;
+
+    padding: 0 30px;
+
+    border: 2px solid #dedee8;
+    border-radius: 17px;
+
     background: white;
-    font-size: 17px;
-    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: 0.2s;
 }
 
-.spacer {
+.shop-button:hover {
+    border-color: #7544ff;
+}
+
+.header-space {
     flex: 1;
 }
 
+
+/* BALANCE */
+
 .balance {
-    height: 55px;
-    min-width: 110px;
-    border: 3px solid #111;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
+    height: 52px;
 
-.plus {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #111;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-}
+    padding: 0 12px 0 17px;
 
-.profile {
-    height: 55px;
-    min-width: 170px;
-    border: 3px solid #111;
-    border-radius: 20px;
+    border: 2px solid #dedee8;
+    border-radius: 17px;
+
+    background: white;
+
     display: flex;
     align-items: center;
-    justify-content: center;
+
     gap: 12px;
-}
 
-.avatar {
-    width: 35px;
-    height: 35px;
-    border: 2px solid #111;
-    border-radius: 10px;
-}
-
-.logout {
-    border: none;
-    background: none;
-    cursor: pointer;
     font-size: 14px;
 }
 
-.home-content {
-    padding: 50px;
+.plus-button {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #6c35ff;
+
+    color: white;
+
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.home-content h1 {
-    font-size: 38px;
+
+/* PROFILE */
+
+.profile {
+    height: 52px;
+
+    padding: 0 14px;
+
+    border: 2px solid #dedee8;
+    border-radius: 17px;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
 }
 
-.home-content p {
-    font-size: 19px;
+.avatar {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 11px;
+
+    background: linear-gradient(135deg, #6c35ff, #a77cff);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
 }
 
-/* МОБИЛЬНАЯ ВЕРСИЯ */
+.nickname {
+    font-size: 14px;
+    font-weight: 600;
+}
 
-@media (max-width: 700px) {
+.logout-button {
+    border: none;
+    background: transparent;
 
-    .start-box {
-        width: 90%;
-    }
+    color: #77778a;
 
-    .main-button {
-        width: 85%;
-    }
+    font-size: 13px;
+}
 
-    .auth-box {
-        width: 90%;
-    }
 
-    .auth-input,
-    .auth-button {
-        width: 90%;
-    }
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    margin: 35px 42px;
+
+    min-height: 370px;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(circle at 75% 45%, #ded3ff 0, transparent 32%),
+        linear-gradient(120deg, #ffffff, #f1efff);
+
+    border: 1px solid #e0dff0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    padding: 55px;
+}
+
+.hero-content {
+    width: 55%;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: 46px;
+
+    line-height: 1.08;
+}
+
+.hero h1 span {
+    color: #6c35ff;
+}
+
+.hero p {
+    color: #68687c;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    max-width: 580px;
+
+    margin: 22px 0 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+}
+
+.hero-main-button {
+    height: 55px;
+
+    padding: 0 28px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: #6c35ff;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    box-shadow: 0 12px 25px rgba(108, 53, 255, 0.25);
+}
+
+.hero-second-button {
+    height: 55px;
+
+    padding: 0 28px;
+
+    border: 2px solid #d5d2e5;
+    border-radius: 16px;
+
+    background: white;
+
+    font-size: 16px;
+}
+
+
+/* DECORATION */
+
+.hero-pet {
+    position: absolute;
+
+    right: 11%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(135deg, #ffffff, #d9ceff);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 105px;
+
+    box-shadow: 0 25px 60px rgba(80, 50, 160, 0.15);
+}
+
+
+/* RAP CARD */
+
+.rap-card {
+    position: absolute;
+
+    right: 4%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 190px;
+
+    padding: 25px 20px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,0.9);
+
+    border: 1px solid #dedee8;
+
+    box-shadow: 0 15px 40px rgba(50,40,100,0.10);
+}
+
+.rap-title {
+    color: #68687c;
+
+    font-size: 14px;
+}
+
+.rap-value {
+    color: #6c35ff;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   НИЖНИЕ КАРТОЧКИ
+========================= */
+
+.features {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    padding: 0 42px 40px;
+}
+
+.feature-card {
+    background: white;
+
+    border: 1px solid #dedee8;
+
+    border-radius: 22px;
+
+    padding: 25px;
+
+    min-height: 130px;
+}
+
+.feature-icon {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 14px;
+
+    background: #eee9ff;
+
+    color: #6c35ff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 17px;
+}
+
+.feature-card p {
+    margin: 0;
+
+    color: #77778a;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================= */
+
+@media (max-width: 900px) {
 
     .header {
         padding: 15px;
@@ -256,37 +680,150 @@ body {
         flex-wrap: wrap;
     }
 
-    .search {
+    .logo-small {
         width: 100%;
     }
 
-    .spacer {
+    .search-box {
+        width: 100%;
+    }
+
+    .header-space {
         display: none;
     }
+
+    .hero {
+        margin: 20px;
+        padding: 30px;
+
+        min-height: 500px;
+
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero-pet {
+        width: 130px;
+        height: 130px;
+
+        font-size: 65px;
+
+        right: 25px;
+        top: auto;
+        bottom: 30px;
+
+        transform: none;
+    }
+
+    .rap-card {
+        right: 20px;
+        top: auto;
+        bottom: 25px;
+
+        transform: none;
+
+        width: 150px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+
+        padding: 0 20px 30px;
+    }
 }
+
+
+@media (max-width: 500px) {
+
+    .start-card,
+    .auth-card {
+        width: 92%;
+    }
+
+    .start-button {
+        width: 100%;
+    }
+
+    .start-card {
+        min-height: 550px;
+    }
+
+    .auth-card {
+        padding: 35px 25px;
+    }
+
+    .profile {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .balance {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .shop-button {
+        width: 100%;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-main-button,
+    .hero-second-button {
+        width: 100%;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ========================= -->
-<!-- СТАРТОВАЯ СТРАНИЦА -->
-<!-- ========================= -->
+
+<!-- =====================================================
+     СТАРТОВАЯ СТРАНИЦА
+===================================================== -->
 
 <section id="startPage" class="page active">
 
-    <div class="start-box">
+    <div class="start-card">
 
-        <div class="logo">
+        <div class="start-logo">
             obmen shop
         </div>
 
-        <button class="main-button" onclick="showPage('loginPage')">
+        <button
+            class="start-button login"
+            onclick="showPage('loginPage')">
+
             ВОЙТИ
+
         </button>
 
-        <button class="main-button" onclick="showPage('registerPage')">
+        <button
+            class="start-button register"
+            onclick="showPage('registerPage')">
+
             ЗАРЕГИСТРИРОВАТЬСЯ
+
         </button>
 
     </div>
@@ -294,36 +831,65 @@ body {
 </section>
 
 
-<!-- ========================= -->
-<!-- СТРАНИЦА ВХОДА -->
-<!-- ========================= -->
+
+<!-- =====================================================
+     ВХОД
+===================================================== -->
 
 <section id="loginPage" class="page">
 
-    <div class="auth-box">
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            obmen shop
+        </div>
+
+        <h2 class="auth-title">
+            С возвращением!
+        </h2>
+
+        <div class="auth-subtitle">
+            Войдите в свой аккаунт, чтобы продолжить
+        </div>
+
 
         <input
             id="loginEmail"
             class="auth-input"
             type="email"
-            placeholder="ПОЧТА"
+            placeholder="Почта"
         >
+
 
         <input
             id="loginPassword"
             class="auth-input"
             type="password"
-            placeholder="ПАРОЛЬ"
+            placeholder="Пароль"
         >
 
-        <button class="auth-button" onclick="login()">
-            ВОЙТИ
+
+        <button
+            class="auth-button"
+            onclick="login()">
+
+            Войти
+
         </button>
 
-        <div id="loginMessage" class="message"></div>
 
-        <button class="back-button" onclick="showPage('startPage')">
+        <div
+            id="loginMessage"
+            class="auth-message">
+        </div>
+
+
+        <button
+            class="auth-back"
+            onclick="showPage('startPage')">
+
             ← Назад
+
         </button>
 
     </div>
@@ -331,43 +897,73 @@ body {
 </section>
 
 
-<!-- ========================= -->
-<!-- СТРАНИЦА РЕГИСТРАЦИИ -->
-<!-- ========================= -->
+
+<!-- =====================================================
+     РЕГИСТРАЦИЯ
+===================================================== -->
 
 <section id="registerPage" class="page">
 
-    <div class="auth-box">
+    <div class="auth-card">
+
+        <div class="auth-logo">
+            obmen shop
+        </div>
+
+        <h2 class="auth-title">
+            Регистрация
+        </h2>
+
+        <div class="auth-subtitle">
+            Создайте аккаунт, чтобы начать обмен
+        </div>
+
 
         <input
             id="registerEmail"
             class="auth-input"
             type="email"
-            placeholder="ПОЧТА"
+            placeholder="Почта"
         >
+
 
         <input
             id="registerPassword"
             class="auth-input"
             type="password"
-            placeholder="ПАРОЛЬ"
+            placeholder="Пароль"
         >
+
 
         <input
             id="registerPassword2"
             class="auth-input"
             type="password"
-            placeholder="ПОВТОРИТЕ ПАРОЛЬ"
+            placeholder="Повторите пароль"
         >
 
-        <button class="auth-button" onclick="register()">
-            ЗАРЕГИСТРИРОВАТЬСЯ
+
+        <button
+            class="auth-button"
+            onclick="register()">
+
+            Зарегистрироваться
+
         </button>
 
-        <div id="registerMessage" class="message"></div>
 
-        <button class="back-button" onclick="showPage('startPage')">
+        <div
+            id="registerMessage"
+            class="auth-message">
+        </div>
+
+
+        <button
+            class="auth-back"
+            onclick="showPage('startPage')">
+
             ← Назад
+
         </button>
 
     </div>
@@ -375,101 +971,263 @@ body {
 </section>
 
 
-<!-- ========================= -->
-<!-- ГЛАВНАЯ ПОСЛЕ ВХОДА -->
-<!-- ========================= -->
+
+<!-- =====================================================
+     ГЛАВНАЯ ПОСЛЕ ВХОДА
+===================================================== -->
 
 <section id="homePage" class="page">
 
+
+    <!-- HEADER -->
+
     <header class="header">
 
+        <div class="logo-small">
+            Obmen Shop
+        </div>
+
+
         <input
-            class="search"
-            placeholder="ПОИСК ТРЕЙДОВ ПО НАЗВАНИЮ ПЕТОВ"
+            class="search-box"
+            placeholder="Поиск трейдов по названию питомца..."
         >
 
+
         <button class="shop-button">
-            МАГАЗИН
+            🛒 Магазин
         </button>
 
-        <div class="spacer"></div>
+
+        <div class="header-space"></div>
+
 
         <div class="balance">
-            <span>БАЛАНС</span>
-            <span class="plus">+</span>
+
+            <span>
+                БАЛАНС
+            </span>
+
+            <button class="plus-button">
+                +
+            </button>
+
         </div>
+
 
         <div class="profile">
 
-            <div class="avatar"></div>
+            <div
+                id="avatar"
+                class="avatar">
+                ?
+            </div>
 
-            <span id="userNick">
+            <span
+                id="userNick"
+                class="nickname">
                 НИК
             </span>
 
-            <button class="logout" onclick="logout()">
+            <button
+                class="logout-button"
+                onclick="logout()">
+
                 Выйти
+
             </button>
 
         </div>
 
     </header>
 
-    <main class="home-content">
 
-        <h1>
-            Добро пожаловать в Obmen Shop
-        </h1>
 
-        <p>
-            Здесь будет система обмена питомцами.
-        </p>
+    <!-- HERO -->
 
-    </main>
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Обменивай питомцев
+                <br>
+                <span>в Adopt Me!</span>
+            </h1>
+
+
+            <p>
+                Добавляй свои трейды, находи нужных питомцев
+                и следи за их RAP прямо в Obmen Shop.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button class="hero-main-button">
+                    ⇄ &nbsp; Начать обмен
+                </button>
+
+                <button class="hero-second-button">
+                    🐾 &nbsp; Смотреть питомцев
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-pet">
+            🦄
+        </div>
+
+
+        <div class="rap-card">
+
+            <div class="rap-title">
+                RAP баланс
+            </div>
+
+            <div class="rap-value">
+                0
+            </div>
+
+            <div
+                style="
+                color:#77778a;
+                font-size:13px;
+                margin-top:8px;
+                ">
+                Добавляй питомцев,
+                чтобы получать RAP
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Поиск трейдов
+            </h3>
+
+            <p>
+                Найди предложения по названию
+                нужного тебе питомца.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🐾
+            </div>
+
+            <h3>
+                Питомцы
+            </h3>
+
+            <p>
+                Управляй своим списком питомцев
+                и создавай предложения.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                RAP
+            </h3>
+
+            <p>
+                Следи за стоимостью питомцев
+                и общей стоимостью коллекции.
+            </p>
+
+        </div>
+
+
+    </section>
 
 </section>
 
 
+
 <script>
 
-/* ========================= */
-/* ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ */
-/* ========================= */
+/* =====================================================
+   ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ
+===================================================== */
 
 function showPage(pageId) {
 
-    document.querySelectorAll('.page').forEach(function(page) {
-        page.classList.remove('active');
+    document.querySelectorAll(".page").forEach(function(page) {
+
+        page.classList.remove("active");
+
     });
 
-    document.getElementById(pageId).classList.add('active');
+    document.getElementById(pageId).classList.add("active");
 
 }
 
 
-/* ========================= */
-/* РЕГИСТРАЦИЯ */
-/* ========================= */
+
+/* =====================================================
+   РЕГИСТРАЦИЯ
+===================================================== */
 
 function register() {
 
     const email =
-        document.getElementById('registerEmail').value.trim();
+        document.getElementById("registerEmail").value.trim();
 
     const password =
-        document.getElementById('registerPassword').value;
+        document.getElementById("registerPassword").value;
 
     const password2 =
-        document.getElementById('registerPassword2').value;
+        document.getElementById("registerPassword2").value;
 
     const message =
-        document.getElementById('registerMessage');
+        document.getElementById("registerMessage");
+
+
+    message.textContent = "";
 
 
     if (!email || !password || !password2) {
 
         message.textContent =
-            'Заполните все поля';
+            "Заполните все поля";
+
+        return;
+    }
+
+
+    if (!email.includes("@")) {
+
+        message.textContent =
+            "Введите корректную почту";
 
         return;
     }
@@ -478,7 +1236,7 @@ function register() {
     if (password.length < 6) {
 
         message.textContent =
-            'Пароль должен содержать минимум 6 символов';
+            "Пароль должен содержать минимум 6 символов";
 
         return;
     }
@@ -487,25 +1245,35 @@ function register() {
     if (password !== password2) {
 
         message.textContent =
-            'Пароли не совпадают';
+            "Пароли не совпадают";
 
         return;
     }
 
 
-    if (localStorage.getItem('obmen_user')) {
+    const existingUser =
+        localStorage.getItem("obmen_user");
 
-        const oldUser =
-            JSON.parse(localStorage.getItem('obmen_user'));
 
-        if (oldUser.email === email) {
+    if (existingUser) {
+
+        const user =
+            JSON.parse(existingUser);
+
+
+        if (user.email === email) {
 
             message.textContent =
-                'Этот аккаунт уже существует';
+                "Такой аккаунт уже существует";
 
             return;
         }
+
     }
+
+
+    const nickname =
+        email.split("@")[0];
 
 
     const user = {
@@ -514,54 +1282,62 @@ function register() {
 
         password: password,
 
-        nick: email.split('@')[0]
+        nick: nickname
 
     };
 
 
     localStorage.setItem(
-        'obmen_user',
+        "obmen_user",
         JSON.stringify(user)
     );
 
 
+    message.style.color = "#3c9b62";
+
     message.textContent =
-        'Аккаунт создан!';
+        "Аккаунт успешно создан!";
 
 
     setTimeout(function() {
 
-        showPage('loginPage');
+        showPage("loginPage");
 
     }, 1000);
 
 }
 
 
-/* ========================= */
-/* ВХОД */
-/* ========================= */
+
+/* =====================================================
+   ВХОД
+===================================================== */
 
 function login() {
 
     const email =
-        document.getElementById('loginEmail').value.trim();
+        document.getElementById("loginEmail").value.trim();
 
     const password =
-        document.getElementById('loginPassword').value;
+        document.getElementById("loginPassword").value;
 
     const message =
-        document.getElementById('loginMessage');
+        document.getElementById("loginMessage");
+
+
+    message.style.color = "#d63a3a";
+
+    message.textContent = "";
 
 
     const savedUser =
-        localStorage.getItem('obmen_user');
+        localStorage.getItem("obmen_user");
 
 
     if (!savedUser) {
 
         message.textContent =
-            'Аккаунт не найден. Сначала зарегистрируйтесь.';
+            "Аккаунт не найден. Зарегистрируйтесь.";
 
         return;
     }
@@ -577,62 +1353,86 @@ function login() {
     ) {
 
         message.textContent =
-            'Неверная почта или пароль';
+            "Неверная почта или пароль";
 
         return;
     }
 
 
     localStorage.setItem(
-        'obmen_logged',
-        'true'
+        "obmen_logged",
+        "true"
     );
 
 
-    document.getElementById('userNick').textContent =
-        user.nick;
+    document.getElementById(
+        "userNick"
+    ).textContent = user.nick;
 
 
-    showPage('homePage');
+    document.getElementById(
+        "avatar"
+    ).textContent =
+        user.nick.charAt(0).toUpperCase();
+
+
+    showPage("homePage");
 
 }
 
 
-/* ========================= */
-/* ВЫХОД */
-/* ========================= */
+
+/* =====================================================
+   ВЫХОД
+===================================================== */
 
 function logout() {
 
-    localStorage.removeItem('obmen_logged');
+    localStorage.removeItem(
+        "obmen_logged"
+    );
 
-    showPage('startPage');
+    showPage("startPage");
 
 }
 
 
-/* ========================= */
-/* ПРОВЕРКА АВТОРИЗАЦИИ */
-/* ========================= */
+
+/* =====================================================
+   ПРОВЕРКА ПРИ ЗАГРУЗКЕ
+===================================================== */
 
 window.onload = function() {
 
     const logged =
-        localStorage.getItem('obmen_logged');
+        localStorage.getItem("obmen_logged");
 
     const savedUser =
-        localStorage.getItem('obmen_user');
+        localStorage.getItem("obmen_user");
 
 
-    if (logged === 'true' && savedUser) {
+    if (
+        logged === "true" &&
+        savedUser
+    ) {
 
         const user =
             JSON.parse(savedUser);
 
-        document.getElementById('userNick').textContent =
+
+        document.getElementById(
+            "userNick"
+        ).textContent =
             user.nick;
 
-        showPage('homePage');
+
+        document.getElementById(
+            "avatar"
+        ).textContent =
+            user.nick.charAt(0).toUpperCase();
+
+
+        showPage("homePage");
 
     }
 
