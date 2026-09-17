@@ -1,577 +1,642 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obmen Shop</title>
 
-    <title>Обмен Shop</title>
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #111111;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #171a21;
-        }
+/* ОБЩЕЕ */
 
-        header {
-            height: 72px;
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
+.page {
+    display: none;
+    min-height: 100vh;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #6c4cff;
-        }
+.page.active {
+    display: flex;
+}
 
-        nav {
-            display: flex;
-            gap: 28px;
-            align-items: center;
-        }
+/* СТАРТОВАЯ */
 
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-size: 15px;
-            cursor: pointer;
-        }
+#startPage {
+    justify-content: center;
+    align-items: center;
+}
 
-        nav a:hover {
-            color: #6c4cff;
-        }
+.start-box {
+    width: 420px;
+    height: 590px;
+    border: 4px solid #111;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
 
-        .profile {
-            background: #f0edff;
-            color: #6c4cff;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-weight: 600;
-        }
+.logo {
+    border: 4px solid #111;
+    border-radius: 20px;
+    width: 230px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    margin-bottom: 55px;
+}
 
-        .hero {
-            padding: 80px 7% 60px;
-            background: linear-gradient(135deg, #eeeaff, #ffffff);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-        }
+.main-button {
+    width: 350px;
+    height: 65px;
+    border: 4px solid #111;
+    border-radius: 25px;
+    background: white;
+    font-size: 21px;
+    cursor: pointer;
+    margin-bottom: 35px;
+}
 
-        .hero-text {
-            max-width: 650px;
-        }
+.main-button:hover {
+    background: #f1f1f1;
+}
 
-        .hero h1 {
-            font-size: 52px;
-            line-height: 1.05;
-            margin-bottom: 22px;
-        }
+/* ВХОД И РЕГИСТРАЦИЯ */
 
-        .hero h1 span {
-            color: #6c4cff;
-        }
+.auth-box {
+    width: 360px;
+    min-height: 570px;
+    border: 4px solid #111;
+    border-radius: 35px;
+    padding: 145px 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .hero p {
-            color: #666;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+.auth-input {
+    width: 285px;
+    height: 65px;
+    border: 4px solid #111;
+    border-radius: 25px;
+    font-size: 20px;
+    padding: 0 18px;
+    outline: none;
+    margin-bottom: 18px;
+}
 
-        .buttons {
-            display: flex;
-            gap: 14px;
-        }
+.auth-input:focus {
+    background: #fafafa;
+}
 
-        button {
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 700;
-            border-radius: 12px;
-            padding: 14px 22px;
-        }
+.auth-button {
+    width: 295px;
+    height: 65px;
+    border: 4px solid #111;
+    border-radius: 25px;
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+}
 
-        .primary {
-            background: #6c4cff;
-            color: white;
-        }
+.auth-button:hover {
+    background: #f1f1f1;
+}
 
-        .primary:hover {
-            background: #5839e8;
-        }
+.back-button {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+}
 
-        .secondary {
-            background: white;
-            color: #333;
-            border: 1px solid #ddd;
-        }
+.message {
+    min-height: 25px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+}
 
-        .hero-card {
-            width: 300px;
-            background: white;
-            border-radius: 24px;
-            padding: 25px;
-            box-shadow: 0 15px 50px rgba(60, 40, 130, 0.12);
-            text-align: center;
-        }
+/* ГЛАВНАЯ */
 
-        .pet-icon {
-            font-size: 100px;
-            margin-bottom: 15px;
-        }
+#homePage {
+    flex-direction: column;
+}
 
-        .hero-card h3 {
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
+.header {
+    height: 110px;
+    border-bottom: 3px solid #111;
+    display: flex;
+    align-items: center;
+    padding: 0 55px;
+    gap: 20px;
+}
 
-        .rap {
-            color: #6c4cff;
-            font-weight: 800;
-        }
+.search {
+    width: 310px;
+    height: 55px;
+    border: 3px solid #111;
+    border-radius: 20px;
+    padding: 0 15px;
+    font-size: 16px;
+}
 
-        .section {
-            padding: 60px 7%;
-        }
+.shop-button {
+    width: 160px;
+    height: 55px;
+    border: 3px solid #111;
+    border-radius: 20px;
+    background: white;
+    font-size: 17px;
+    cursor: pointer;
+}
 
-        .section-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
+.spacer {
+    flex: 1;
+}
 
-        .section-title h2 {
-            font-size: 30px;
-        }
+.balance {
+    height: 55px;
+    min-width: 110px;
+    border: 3px solid #111;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
-        .search {
-            width: 250px;
-            padding: 13px 16px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            outline: none;
-        }
+.plus {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #111;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
 
-        .pets {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.profile {
+    height: 55px;
+    min-width: 170px;
+    border: 3px solid #111;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
 
-        .pet {
-            background: white;
-            border: 1px solid #e8e8ed;
-            border-radius: 18px;
-            padding: 22px;
-            text-align: center;
-            transition: 0.2s;
-        }
+.avatar {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #111;
+    border-radius: 10px;
+}
 
-        .pet:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.07);
-        }
+.logout {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
 
-        .pet-image {
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 75px;
-            background: #f7f6ff;
-            border-radius: 14px;
-            margin-bottom: 16px;
-        }
+.home-content {
+    padding: 50px;
+}
 
-        .pet h3 {
-            margin-bottom: 7px;
-        }
+.home-content h1 {
+    font-size: 38px;
+}
 
-        .pet p {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
+.home-content p {
+    font-size: 19px;
+}
 
-        .trade-btn {
-            width: 100%;
-            background: #f0edff;
-            color: #6c4cff;
-            padding: 11px;
-        }
+/* МОБИЛЬНАЯ ВЕРСИЯ */
 
-        .trade-btn:hover {
-            background: #6c4cff;
-            color: white;
-        }
+@media (max-width: 700px) {
 
-        .features {
-            background: white;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+    .start-box {
+        width: 90%;
+    }
 
-        .feature {
-            padding: 30px;
-            border: 1px solid #eee;
-            border-radius: 18px;
-        }
+    .main-button {
+        width: 85%;
+    }
 
-        .feature-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
+    .auth-box {
+        width: 90%;
+    }
 
-        .feature h3 {
-            margin-bottom: 10px;
-        }
+    .auth-input,
+    .auth-button {
+        width: 90%;
+    }
 
-        .feature p {
-            color: #777;
-            line-height: 1.5;
-        }
+    .header {
+        padding: 15px;
+        height: auto;
+        flex-wrap: wrap;
+    }
 
-        footer {
-            background: #17151f;
-            color: white;
-            padding: 35px 7%;
-            display: flex;
-            justify-content: space-between;
-        }
+    .search {
+        width: 100%;
+    }
 
-        footer span {
-            color: #aaa;
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .buttons {
-                justify-content: center;
-            }
-
-            .pets {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .features {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 0 20px;
-            }
-
-            nav a:not(.profile) {
-                display: none;
-            }
-
-            .hero {
-                padding: 50px 20px;
-            }
-
-            .hero h1 {
-                font-size: 38px;
-            }
-
-            .section {
-                padding: 40px 20px;
-            }
-
-            .pets {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-
-            .search {
-                width: 100%;
-            }
-
-            footer {
-                padding: 30px 20px;
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+    .spacer {
+        display: none;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">Обмен Shop</div>
+<!-- ========================= -->
+<!-- СТАРТОВАЯ СТРАНИЦА -->
+<!-- ========================= -->
 
-    <nav>
-        <a href="#">Главная</a>
-        <a href="#pets">Питомцы</a>
-        <a href="#how">Как это работает</a>
-        <a class="profile">👤 Профиль</a>
-    </nav>
-</header>
+<section id="startPage" class="page active">
 
+    <div class="start-box">
 
-<section class="hero">
-
-    <div class="hero-text">
-
-        <h1>
-            Обменивай питомцев<br>
-            <span>в Adopt Me!</span>
-        </h1>
-
-        <p>
-            Добавляй своих питомцев, отслеживай их RAP
-            и собирай желаемых питомцев для обмена.
-        </p>
-
-        <div class="buttons">
-            <button class="primary" onclick="startTrading()">
-                Начать обмен
-            </button>
-
-            <button class="secondary" onclick="showPets()">
-                Смотреть питомцев
-            </button>
+        <div class="logo">
+            obmen shop
         </div>
 
-    </div>
+        <button class="main-button" onclick="showPage('loginPage')">
+            ВОЙТИ
+        </button>
 
-
-    <div class="hero-card">
-
-        <div class="pet-icon">🦄</div>
-
-        <h3>Neon Unicorn</h3>
-
-        <p>
-            RAP:
-            <span class="rap">12,450</span>
-        </p>
+        <button class="main-button" onclick="showPage('registerPage')">
+            ЗАРЕГИСТРИРОВАТЬСЯ
+        </button>
 
     </div>
 
 </section>
 
 
-<section class="section" id="pets">
+<!-- ========================= -->
+<!-- СТРАНИЦА ВХОДА -->
+<!-- ========================= -->
 
-    <div class="section-title">
+<section id="loginPage" class="page">
 
-        <h2>Популярные питомцы</h2>
+    <div class="auth-box">
+
+        <input
+            id="loginEmail"
+            class="auth-input"
+            type="email"
+            placeholder="ПОЧТА"
+        >
+
+        <input
+            id="loginPassword"
+            class="auth-input"
+            type="password"
+            placeholder="ПАРОЛЬ"
+        >
+
+        <button class="auth-button" onclick="login()">
+            ВОЙТИ
+        </button>
+
+        <div id="loginMessage" class="message"></div>
+
+        <button class="back-button" onclick="showPage('startPage')">
+            ← Назад
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- СТРАНИЦА РЕГИСТРАЦИИ -->
+<!-- ========================= -->
+
+<section id="registerPage" class="page">
+
+    <div class="auth-box">
+
+        <input
+            id="registerEmail"
+            class="auth-input"
+            type="email"
+            placeholder="ПОЧТА"
+        >
+
+        <input
+            id="registerPassword"
+            class="auth-input"
+            type="password"
+            placeholder="ПАРОЛЬ"
+        >
+
+        <input
+            id="registerPassword2"
+            class="auth-input"
+            type="password"
+            placeholder="ПОВТОРИТЕ ПАРОЛЬ"
+        >
+
+        <button class="auth-button" onclick="register()">
+            ЗАРЕГИСТРИРОВАТЬСЯ
+        </button>
+
+        <div id="registerMessage" class="message"></div>
+
+        <button class="back-button" onclick="showPage('startPage')">
+            ← Назад
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- ГЛАВНАЯ ПОСЛЕ ВХОДА -->
+<!-- ========================= -->
+
+<section id="homePage" class="page">
+
+    <header class="header">
 
         <input
             class="search"
-            id="search"
-            type="text"
-            placeholder="🔍 Поиск питомца..."
-            oninput="searchPets()"
+            placeholder="ПОИСК ТРЕЙДОВ ПО НАЗВАНИЮ ПЕТОВ"
         >
 
-    </div>
+        <button class="shop-button">
+            МАГАЗИН
+        </button>
 
+        <div class="spacer"></div>
 
-    <div class="pets" id="petList">
+        <div class="balance">
+            <span>БАЛАНС</span>
+            <span class="plus">+</span>
+        </div>
 
-        <div class="pet" data-name="Unicorn">
+        <div class="profile">
 
-            <div class="pet-image">🦄</div>
+            <div class="avatar"></div>
 
-            <h3>Unicorn</h3>
+            <span id="userNick">
+                НИК
+            </span>
 
-            <p>Legendary</p>
-
-            <p class="rap">RAP 1,250</p>
-
-            <button class="trade-btn" onclick="trade('Unicorn')">
-                Обменять
+            <button class="logout" onclick="logout()">
+                Выйти
             </button>
 
         </div>
 
+    </header>
 
-        <div class="pet" data-name="Dragon">
+    <main class="home-content">
 
-            <div class="pet-image">🐉</div>
+        <h1>
+            Добро пожаловать в Obmen Shop
+        </h1>
 
-            <h3>Dragon</h3>
+        <p>
+            Здесь будет система обмена питомцами.
+        </p>
 
-            <p>Legendary</p>
-
-            <p class="rap">RAP 980</p>
-
-            <button class="trade-btn" onclick="trade('Dragon')">
-                Обменять
-            </button>
-
-        </div>
-
-
-        <div class="pet" data-name="Frost Dragon">
-
-            <div class="pet-image">🐲</div>
-
-            <h3>Frost Dragon</h3>
-
-            <p>Legendary</p>
-
-            <p class="rap">RAP 8,700</p>
-
-            <button class="trade-btn" onclick="trade('Frost Dragon')">
-                Обменять
-            </button>
-
-        </div>
-
-
-        <div class="pet" data-name="Kitsune">
-
-            <div class="pet-image">🦊</div>
-
-            <h3>Kitsune</h3>
-
-            <p>Legendary</p>
-
-            <p class="rap">RAP 760</p>
-
-            <button class="trade-btn" onclick="trade('Kitsune')">
-                Обменять
-            </button>
-
-        </div>
-
-    </div>
+    </main>
 
 </section>
-
-
-<section class="section features" id="how">
-
-    <div class="feature">
-
-        <div class="feature-icon">🐾</div>
-
-        <h3>Добавь питомцев</h3>
-
-        <p>
-            Создай свою коллекцию и добавь питомцев,
-            которыми владеешь.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">💎</div>
-
-        <h3>Узнай RAP</h3>
-
-        <p>
-            Система будет использовать стоимость питомцев
-            для расчёта твоего виртуального баланса.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">🔄</div>
-
-        <h3>Создавай обмен</h3>
-
-        <p>
-            Выбирай питомцев и формируй желаемый обмен
-            через удобный интерфейс.
-        </p>
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    <strong>Обмен Shop</strong>
-
-    <span>Adopt Me trading platform</span>
-
-</footer>
 
 
 <script>
 
-function startTrading() {
-    document.getElementById("pets").scrollIntoView({
-        behavior: "smooth"
+/* ========================= */
+/* ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ */
+/* ========================= */
+
+function showPage(pageId) {
+
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
     });
+
+    document.getElementById(pageId).classList.add('active');
+
 }
 
-function showPets() {
-    document.getElementById("pets").scrollIntoView({
-        behavior: "smooth"
-    });
-}
 
-function trade(pet) {
-    alert("Вы выбрали питомца: " + pet);
-}
+/* ========================= */
+/* РЕГИСТРАЦИЯ */
+/* ========================= */
 
-function searchPets() {
+function register() {
 
-    const query = document
-        .getElementById("search")
-        .value
-        .toLowerCase();
+    const email =
+        document.getElementById('registerEmail').value.trim();
 
-    const pets = document.querySelectorAll(".pet");
+    const password =
+        document.getElementById('registerPassword').value;
 
-    pets.forEach(function(pet) {
+    const password2 =
+        document.getElementById('registerPassword2').value;
 
-        const name = pet
-            .getAttribute("data-name")
-            .toLowerCase();
+    const message =
+        document.getElementById('registerMessage');
 
-        if (name.includes(query)) {
-            pet.style.display = "";
-        } else {
-            pet.style.display = "none";
+
+    if (!email || !password || !password2) {
+
+        message.textContent =
+            'Заполните все поля';
+
+        return;
+    }
+
+
+    if (password.length < 6) {
+
+        message.textContent =
+            'Пароль должен содержать минимум 6 символов';
+
+        return;
+    }
+
+
+    if (password !== password2) {
+
+        message.textContent =
+            'Пароли не совпадают';
+
+        return;
+    }
+
+
+    if (localStorage.getItem('obmen_user')) {
+
+        const oldUser =
+            JSON.parse(localStorage.getItem('obmen_user'));
+
+        if (oldUser.email === email) {
+
+            message.textContent =
+                'Этот аккаунт уже существует';
+
+            return;
         }
+    }
 
-    });
+
+    const user = {
+
+        email: email,
+
+        password: password,
+
+        nick: email.split('@')[0]
+
+    };
+
+
+    localStorage.setItem(
+        'obmen_user',
+        JSON.stringify(user)
+    );
+
+
+    message.textContent =
+        'Аккаунт создан!';
+
+
+    setTimeout(function() {
+
+        showPage('loginPage');
+
+    }, 1000);
+
 }
+
+
+/* ========================= */
+/* ВХОД */
+/* ========================= */
+
+function login() {
+
+    const email =
+        document.getElementById('loginEmail').value.trim();
+
+    const password =
+        document.getElementById('loginPassword').value;
+
+    const message =
+        document.getElementById('loginMessage');
+
+
+    const savedUser =
+        localStorage.getItem('obmen_user');
+
+
+    if (!savedUser) {
+
+        message.textContent =
+            'Аккаунт не найден. Сначала зарегистрируйтесь.';
+
+        return;
+    }
+
+
+    const user =
+        JSON.parse(savedUser);
+
+
+    if (
+        user.email !== email ||
+        user.password !== password
+    ) {
+
+        message.textContent =
+            'Неверная почта или пароль';
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        'obmen_logged',
+        'true'
+    );
+
+
+    document.getElementById('userNick').textContent =
+        user.nick;
+
+
+    showPage('homePage');
+
+}
+
+
+/* ========================= */
+/* ВЫХОД */
+/* ========================= */
+
+function logout() {
+
+    localStorage.removeItem('obmen_logged');
+
+    showPage('startPage');
+
+}
+
+
+/* ========================= */
+/* ПРОВЕРКА АВТОРИЗАЦИИ */
+/* ========================= */
+
+window.onload = function() {
+
+    const logged =
+        localStorage.getItem('obmen_logged');
+
+    const savedUser =
+        localStorage.getItem('obmen_user');
+
+
+    if (logged === 'true' && savedUser) {
+
+        const user =
+            JSON.parse(savedUser);
+
+        document.getElementById('userNick').textContent =
+            user.nick;
+
+        showPage('homePage');
+
+    }
+
+};
 
 </script>
 
